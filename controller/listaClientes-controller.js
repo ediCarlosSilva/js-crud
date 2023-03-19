@@ -24,29 +24,29 @@ const criaNovaLinha = (nome, email, id) => {
 // Percorrendo o DOM
 const tabela = document.querySelector('[data-tabela]');
 
-tabela.addEventListener('click', (evento) => {
+tabela.addEventListener('click', async (evento) => {
     // console.log(evento.target);
     let ehBotaoDeletar = evento.target.classList == 'botao-simples botao-simples--excluir';
 
-    if(ehBotaoDeletar) {
+    if (ehBotaoDeletar) {
         const linhaCliente = evento.target.closest('[data-id]');
         let id = linhaCliente.dataset.id;
-        
-        clienteService.removeCliente(id)
-        .then(() => {
-            linhaCliente.remove();
-        })
+
+        await clienteService.removeCliente(id)
+
+        linhaCliente.remove();
+
     }
 
 });
 
-// fazendo junção com listaClientes que é uma promise
-clienteService.listaClientes()
-    .then(data => {
-        // console.log(data);
-        // const data = JSON.parse(http.response);
+const render = async () => {
 
-        data.forEach(elemento => {
-            tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id));
-        });
-    })
+    const listaClientes = await clienteService.listaClientes()
+
+    listaClientes.forEach(elemento => {
+        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id));
+    });
+}
+
+render();
