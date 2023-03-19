@@ -9,6 +9,16 @@
       "nome": "Edi Carlos",
       "email": "edi@gmail.com",
       "id": 6
+    },
+    {
+      "nome": "aline",
+      "email": "aline@gmail.com",
+      "id": 7
+    },
+    {
+      "nome": "pedro",
+      "email": "pedro@gmail.com",
+      "id": 8
     }
   ]
 }
