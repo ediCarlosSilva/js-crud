@@ -5,6 +5,12 @@
     text-align: center;
 }
 
+.aviso {
+    display: inline-block;
+    padding: 1rem;
+    font-weight: bold;
+}
+
 .cadastro-cartao__icone-concluido {
     display: block;
     width: 3.5rem;
